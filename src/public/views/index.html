@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrakoot</title>
+    <link rel="stylesheet" href="./Css/Index.css">
+</head>
+
+<body>
+
+
+    <form action="http://localhost:8000/" method="POST">
+
+        <div class="head">
+            <div class="bg"></div>
+            <div class="bg bg2"></div>
+            <div class="bg bg3"></div>
+            <div class="title">
+                <h1>Match Making</h1>
+            </div>
+        </div>
+        <div class="card">
+
+            <div class="Sub-title">
+                <h3>Man</h3>
+            </div>
+            <div class="Container">
+                <div class="date box">
+                    <label for="dateMan">Date:- &nbsp;</label>
+                    <input type="date" name="date" id="dateMan">
+                </div>
+                <div class="time box">
+                    <label for="timeMan">Time:- &nbsp;</label>
+                    <input type="time" name="time" id="timeMan">
+                </div>
+                <div class="place box">
+                    <label for="placeMan">Place:- &nbsp;</label>
+                    <input type="text" name="time" id="placeMan">
+                </div>
+                <div class="latitude box">
+                    <label for="LatitudeMan">Latitude:- &nbsp;</label>
+                    <input type="number" name="LatitudeMan" step="any" id="LatitudeMan">
+                </div>
+                <div class="longitude box">
+                    <label for="LongitudeMan">Longitude:- &nbsp;</label>
+                    <input type="number" name="LongitudeMan" step="any" id="LongitudeMan">
+                </div>
+            </div>
+
+
+            <div class="Sub-title">
+                <h3>Women</h3>
+            </div>
+            <div class="Container">
+                <div class="date box">
+                    <label for="dateMan">Date:- &nbsp;</label>
+                    <input type="date" name="date" id="dateMan">
+                </div>
+                <div class="time box">
+                    <label for="timeMan">Time:- &nbsp;</label>
+                    <input type="time" name="time" id="timeMan">
+                </div>
+                <div class="place box">
+                    <label for="placeMan">Place:- &nbsp;</label>
+                    <input type="text" name="time" id="placeMan">
+                </div>
+                <div class="latitude box">
+                    <label for="LatitudeMan">Latitude:- &nbsp;</label>
+                    <input type="number" name="LatitudeMan" step="any" id="LatitudeMan">
+                </div>
+                <div class="longitude box">
+                    <label for="LongitudeMan">Longitude:- &nbsp;</label>
+                    <input type="number" name="LongitudeMan" step="any" id="LongitudeMan">
+                </div>
+            </div>
+
+            <div class="btn-deg">
+                <div class="check-btn">
+                    <div class="check-btn-sub"></div>
+                    <button>CHECK</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="../app.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        var api = 'planets';
+        var userId = '618374';
+        var apiKey = 'ba27dbba0bd6b5e6b5200d1c39ec47f8';
+        var data = {
+            day: 12,
+            month: 3,
+            year: 1992,
+            hour: 2,
+            min: 23,
+            lat: 19.132,
+            lon: 72.342,
+            tzone: 5.5
+        };
+        var request = $.ajax({
+            url: "https://json.astrologyapi.com/v1/" + api,
+            method: "POST",
+            dataType: 'json',
+            headers: {
+                "authorization": "Basic " + btoa(userId + ":" + apiKey),
+                "Content-Type": 'application/json'
+            },
+            data: JSON.stringify(data)
+        });
+        console.log(request)
+        console.log(data)
+
+        request.then(function (resp) {
+            console.log(resp);
+        }, function (err) {
+            console.log(err);
+        });
+    </script>
+</body>
+
+</html>
